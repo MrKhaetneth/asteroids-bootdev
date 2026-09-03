@@ -26,10 +26,13 @@ def main():
             if event.type == pygame.QUIT: 
                 return 
         
-        screen.fill("black")
-        player.draw(screen)
-        pygame.display.flip()
         dt = clock.tick(60) / 1000
+        
+        screen.fill("black") # Black background screen
+        player.draw(screen) # Draw player sprite on screen
+        player.update(dt) # Update rotation
+        
+        pygame.display.flip() # Render
 
 if __name__ == "__main__":
     main()
