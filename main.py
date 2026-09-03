@@ -10,6 +10,12 @@ def main():
     print(f"Screen width: {SCREEN_WIDTH}")
     print(f"Screen height: {SCREEN_HEIGHT}")
     
+    # Grouping 
+    updatable = pygame.sprite.Group()
+    drawable = pygame.sprite.Group()
+    Player.containers = (updatable, drawable)
+    
+    # Player object
     player = Player(x = SCREEN_WIDTH / 2, y = SCREEN_HEIGHT / 2)
     
     pygame.init()
@@ -29,8 +35,10 @@ def main():
         dt = clock.tick(60) / 1000
         
         screen.fill("black") # Black background screen
-        player.draw(screen) # Draw player sprite on screen
-        player.update(dt) # Update rotation
+        
+        for thing in drawable:
+            thing.draw(screen) # Draw player sprite on screen
+        updatable.update(dt) # Update rotation and position
         
         pygame.display.flip() # Render
 
