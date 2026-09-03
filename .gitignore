@@ -10,4 +10,5 @@ wheels/
 .venv
 
 # JSONL
-gamestate.jsonl
+game_state.jsonl
+game_events.jsonl
